@@ -1,0 +1,5 @@
+replicaCount: 2
+message: "hello it's me (prod)"
+service:
+  type: NodePort
+  nodePort: 30081

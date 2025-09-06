@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "nginx-hello.fullname" . }}-html
+  labels:
+    {{- include "nginx-hello.labels" . | nindent 4 }}
+data:
+  index.html: |
+    <html>
+    <head><title>nginx-hello</title></head>
+    <body>
+      <h1>{{ .Values.message }}</h1>
+    </body>
+    </html>

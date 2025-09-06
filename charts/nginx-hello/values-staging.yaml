@@ -1,0 +1,5 @@
+replicaCount: 1
+message: "hello it's me (staging)"
+service:
+  type: NodePort
+  nodePort: 30080
