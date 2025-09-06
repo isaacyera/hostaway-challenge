@@ -1,0 +1,11 @@
+installCRDs: true
+
+server:
+  extraArgs:
+    - --insecure
+  service:
+    type: ClusterIP
+
+configs:
+  params:
+    server.insecure: true

@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ${name}
+  namespace: ${namespace}
+spec:
+  project: ${project}
+  source:
+    repoURL: ${repo_url}
+    targetRevision: ${target_revision}
+    path: ${chart_path}
+    helm:
+      releaseName: nginx-hello
+      valueFiles:
+        - ${helm_values_file}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ${dest_namespace}
+  syncPolicy:
+%{ if automated ~}
+    automated:
+      prune: true
+      selfHeal: true
+%{ endif ~}
