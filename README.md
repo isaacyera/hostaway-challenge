@@ -86,6 +86,7 @@ hostaway-challenge/
 
 - Linux/macOS (Windows WSL2 supported)
 - [Minikube](https://minikube.sigs.k8s.io/docs/)
+- [Homebrew](https://brew.sh/) (for macOS package management)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Terraform](https://www.terraform.io/downloads.html) >= 1.6
 - [Helm](https://helm.sh/docs/intro/install/) 3
@@ -137,12 +138,22 @@ minikube delete
 
 ## Monitoring Metrics & Thresholds
 
-- HTTP 5xx rate >1% prod / >5% staging  
-- Latency p95 >300ms prod / >600ms staging  
-- Pod restarts >=3 in 5m  
-- CPU >80% or Memory >85% for 15m  
-- ArgoCD app not Healthy/Synced >5m  
-- Immediate alert for CrashLoopBackOff or ImagePullBackOff events  
+### Key Monitoring Metrics & Thresholds
+
+- **HTTP 5xx error rate >0.5% (production) / >2% (staging)**  
+        Even small increases in backend errors can indicate outages, misconfigurations, or code issues.
+- **Latency p95 >200ms (production) / >400ms (staging)**  
+        High latency impacts user experience and may signal performance bottlenecks or resource constraints.
+- **Pod restarts >=2 in 10m**  
+        Frequent restarts often point to application instability, crashes, or resource limits.
+- **CPU >75% or Memory >80% for 10m**  
+        Sustained high resource usage can degrade performance or cause pod evictions.
+- **ArgoCD app not Healthy/Synced >3m**  
+        Ensures deployments are current; delays may block releases or indicate sync issues.
+- **Immediate alert for CrashLoopBackOff or ImagePullBackOff events**  
+        Detects failed pods or image problems that prevent application availability.
+
+These alerts are important because they enable rapid detection of reliability, performance, and deployment issues, allowing quick intervention to minimize downtime and maintain service quality.
 
 ---
 

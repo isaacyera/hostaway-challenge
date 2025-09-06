@@ -1,9 +1,18 @@
 REPO_URL ?= https://github.com/isaacyera/hostaway-challenge
 ARGOCD_NAMESPACE ?= "argocd"
 
-.PHONY: up destroy
+.PHONY: up destroy prerequisites
 
-up:
+prerequisites:
+    @echo ">>> Installing prerequisites using Homebrew"
+    @which brew >/dev/null 2>&1 || (echo "Installing Homebrew..." && /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+    brew install minikube
+    brew install kubectl
+    brew install terraform
+    brew install helm
+    brew install git
+
+up: prerequisites
 	@echo ">>> Starting Minikube (if not already running)"
 	@minikube status >/dev/null 2>&1 || minikube start
 	@echo ">>> Terraform init/apply"
