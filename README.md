@@ -88,7 +88,7 @@ hostaway-challenge/
 - [Minikube](https://minikube.sigs.k8s.io/docs/)
 - [Homebrew](https://brew.sh/) (for macOS package management)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Terraform](https://www.terraform.io/downloads.html) >= 1.6
+- [Terraform](https://www.terraform.io/downloads.html)
 - [Helm](https://helm.sh/docs/intro/install/) 3
 - Docker
 - GNU Make (for using the Makefile)
@@ -218,4 +218,5 @@ These alerts are important because they enable rapid detection of reliability, p
 ## References
 
 - [ArgoCD Documentation](https://argo-cd.readthedocs.io/)
+
 - [Terraform Kubernetes Provider](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs)
